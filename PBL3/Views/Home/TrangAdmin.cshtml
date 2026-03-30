@@ -1,0 +1,165 @@
+﻿@{
+    Layout = null; // Tắt giao diện mặc định của Visual Studio
+
+    // Lấy tên đăng nhập từ Session ra biến C#
+    var tenAdmin = Context.Session.GetString("TenDangNhap") ?? "Quản trị viên";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Thư viện</title>
+    <link rel="stylesheet" href="~/css/TrangAdmin.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar" style="display: flex; flex-direction: column; min-height: 100vh;">
+            <div class="logo">📚 LIBRARY PRO</div>
+            <ul>
+                <li onclick="showSection('dashboard')" id="menu-dashboard" class="active">Trang chủ</li>
+                <li onclick="showSection('books')" id="menu-books">Quản lý sách</li>
+                <li onclick="showSection('readers')" id="menu-readers">Độc giả</li>
+                <li onclick="showSection('borrow')" id="menu-borrow">Mượn / Trả</li>
+                <li onclick="showSection('import')" id="menu-import">Nhập kho</li>
+                <li onclick="showSection('reference')" id="menu-reference">Danh mục</li>
+                <li onclick="showSection('reports')" id="menu-reports">Báo cáo</li>
+            </ul>
+
+            <div style="margin-top: auto; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="color: white; margin-bottom: 15px; font-size: 14px;">
+                    Xin chào, <b style="color: #6ee7a0;">@tenAdmin</b>
+                </p>
+                <a href="/Home/DangXuat" style="display: inline-block; width: 100%; background-color: #dc3545; color: white; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s;">
+                    Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <main class="main">
+            <section id="dashboard" class="content-section">
+                <h1>Tổng quan</h1>
+                <div class="cards" id="dashboard-stats"></div>
+                <div class="card-style mt-20">
+                    <h3>Hoạt động gần đây</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Mã phiếu</th><th>Độc giả</th><th>Sách</th><th>Hạn trả</th><th>Trạng thái</th></tr>
+                        </thead>
+                        <tbody id="dashboard-recent-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="books" class="content-section" style="display:none;">
+                <h1>Quản lý kho sách</h1>
+                <div class="split-layout">
+                    <div class="table-container card-style">
+                        <input type="text" placeholder="Tìm kiếm sách..." class="search-bar">
+                        <table>
+                            <thead>
+                                <tr><th>Mã</th><th>Tên sách</th><th>Tác giả</th><th>Số lượng</th><th>Trạng thái</th></tr>
+                            </thead>
+                            <tbody id="books-table-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="side-form card-style">
+                        <h3>Thông tin sách</h3>
+                        <form id="bookForm">
+                            <label>Tên sách</label><input type="text" name="title">
+                            <label>Tác giả</label><select name="author"><option value="">-- Chọn tác giả --</option></select>
+                            <label>Thể loại</label><select name="category"><option value="">-- Chọn thể loại --</option></select>
+                            <label>Số lượng</label><input type="number" name="qty" value="0">
+                            <label>Đơn giá</label><input type="number" name="price" value="0">
+                            <button type="button" class="btn-primary w-full mt-20">Lưu dữ liệu</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="readers" class="content-section" style="display:none;">
+                <h1>Quản lý độc giả</h1>
+                <div class="split-layout">
+                    <div class="table-container card-style">
+                        <input type="text" placeholder="Tìm kiếm độc giả..." class="search-bar">
+                        <table>
+                            <thead>
+                                <tr><th>Mã ĐG</th><th>Họ tên</th><th>Số điện thoại</th><th>Hạn thẻ</th></tr>
+                            </thead>
+                            <tbody id="readers-table-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="side-form card-style">
+                        <h3>Chi tiết độc giả</h3>
+                        <form id="readerForm">
+                            <label>Mã ĐG (MaDG)</label><input type="text" name="id" placeholder="Tự động...">
+                            <label>Họ tên</label><input type="text" name="fullName">
+                            <label>Ngày sinh</label><input type="date" name="dob">
+                            <label>Điện thoại</label><input type="text" name="phone">
+                            <label>Địa chỉ</label><textarea name="address" rows="2"></textarea>
+                            <label>Hạn thẻ</label><input type="date" name="expiry">
+                            <button type="button" class="btn-primary w-full mt-20">Lưu hồ sơ</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="borrow" class="content-section" style="display:none;">
+                <h1>Phiếu mượn / trả sách</h1>
+                <div class="card-style grid-3">
+                    <div><label>Độc giả</label><select><option value="">-- Chọn độc giả --</option></select></div>
+                    <div><label>Ngày mượn</label><input type="date"></div>
+                    <div><label>Hạn trả</label><input type="date"></div>
+                </div>
+                <div class="table-container card-style mt-20">
+                    <table>
+                        <thead>
+                            <tr><th>Mã phiếu</th><th>Sách</th><th>Ngày mượn</th><th>Hạn trả</th><th>Thao tác</th></tr>
+                        </thead>
+                        <tbody id="borrow-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="import" class="content-section" style="display:none;">
+                <h1>Nhập kho vật tư</h1>
+                <div class="card-style">
+                    <table>
+                        <thead>
+                            <tr><th>Mã đơn</th><th>Nhà cung cấp</th><th>Ngày nhập</th><th>Tổng tiền</th></tr>
+                        </thead>
+                        <tbody id="import-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="reference" class="content-section" style="display:none;">
+                <h1>Danh mục bổ trợ</h1>
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchRefTab('authors')">Tác giả</button>
+                    <button class="tab-btn" onclick="switchRefTab('categories')">Thể loại</button>
+                    <button class="tab-btn" onclick="switchRefTab('publishers')">Nhà xuất bản</button>
+                </div>
+                <div id="ref-content" class="card-style mt-10">
+                    <table>
+                        <thead><tr><th>Mã</th><th>Tên danh mục</th><th>Hành động</th></tr></thead>
+                        <tbody id="ref-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="reports" class="content-section" style="display:none;">
+                <h1>Báo cáo thống kê</h1>
+                <div class="card-style">
+                    <table>
+                        <tbody id="reports-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="~/js/TrangAdmin.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký thẻ Thư viện - LibraryPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f8fa;
+        }
+
+        .input-focus:focus {
+            border-color: #3b6cb7 !important;
+            box-shadow: 0 0 0 3px rgba(59,108,183,0.15) !important;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex items-center justify-center p-6 py-12">
+
+    <div class="w-full max-w-[550px] bg-white rounded-2xl p-8 border border-[#e2e8e4] shadow-sm relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#3b6cb7] to-[#254d97]"></div>
+
+        <div class="text-center mb-6 mt-2">
+            <div class="inline-flex w-14 h-14 rounded-2xl items-center justify-center bg-[#eef2fb] mb-4">
+                <i class="fa-solid fa-user-plus text-[24px] text-[#3b6cb7]"></i>
+            </div>
+            <h2 class="text-[#0f1e16] text-[1.5rem] font-bold leading-tight">Mở Thẻ Độc Giả</h2>
+            <p class="text-[#6b7a72] text-[0.9rem] mt-1">Điền thông tin để tham gia thư viện LibraryPro</p>
+        </div>
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-[0.85rem] font-medium flex items-center gap-2">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                @TempData["Error"]
+            </div>
+        }
+
+        <form id="registerForm" method="post" action="/Home/XulyDangKy" class="space-y-4" onsubmit="return validateForm()">
+
+            <div class="space-y-1.5">
+                <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Họ và tên</label>
+                <div class="relative">
+                    <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                        <i class="fa-regular fa-address-card text-[17px]"></i>
+                    </div>
+                    <input type="text" name="hoTen" required
+                           class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                           placeholder="VD: Nguyễn Văn A">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                    <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Ngày sinh</label>
+                    <div class="relative">
+                        <input type="date" name="ngaySinh" required
+                               class="w-full px-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] transition-all input-focus text-[0.92rem]">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Giới tính</label>
+                    <div class="relative">
+                        <select name="gioiTinh" required
+                                class="w-full px-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] transition-all input-focus text-[0.92rem]">
+                            <option value="" disabled selected>-- Chọn --</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-1.5">
+                <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Số điện thoại (Dùng làm Tài khoản đăng nhập)</label>
+                <div class="relative">
+                    <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                        <i class="fa-solid fa-phone text-[17px]"></i>
+                    </div>
+                    <input type="tel" name="soDienThoai" required pattern="[0-9]{9,11}" title="Vui lòng nhập số điện thoại hợp lệ"
+                           class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                           placeholder="Nhập số điện thoại...">
+                </div>
+            </div>
+
+            <div class="space-y-1.5">
+                <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Địa chỉ liên hệ</label>
+                <div class="relative">
+                    <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                        <i class="fa-solid fa-location-dot text-[17px]"></i>
+                    </div>
+                    <input type="text" name="diaChi" required
+                           class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                           placeholder="Nhập địa chỉ nhà, phường/xã, quận/huyện...">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                    <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Mật khẩu</label>
+                    <div class="relative">
+                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                            <i class="fa-solid fa-lock text-[17px]"></i>
+                        </div>
+                        <input type="password" id="matKhau" name="matKhau" required minlength="4"
+                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                               placeholder="Tạo mật khẩu...">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Xác nhận mật khẩu</label>
+                    <div class="relative">
+                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                            <i class="fa-solid fa-shield-halved text-[17px]"></i>
+                        </div>
+                        <input type="password" id="xacNhanMatKhau" required
+                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                               placeholder="Nhập lại mật khẩu...">
+                    </div>
+                </div>
+            </div>
+
+            <p id="error-msg" class="text-red-500 text-[0.85rem] font-medium hidden mt-1">
+                <i class="fa-solid fa-triangle-exclamation"></i> Mật khẩu xác nhận không khớp!
+            </p>
+
+            <button type="submit" class="w-full py-3.5 mt-6 rounded-xl text-white font-semibold text-[0.95rem] flex justify-center items-center gap-2 hover:opacity-90 transition-all" style="background: linear-gradient(135deg, #3b6cb7 0%, #254d97 100%); box-shadow: 0 4px 16px rgba(59,108,183,0.35);">
+                <i class="fa-solid fa-check text-[17px]"></i>
+                <span>Xác nhận Đăng ký</span>
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="/Home/Index" class="inline-flex items-center gap-2 text-[#6b7a72] hover:text-[#3b6cb7] font-medium text-[0.9rem] transition-colors">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Quay lại Đăng nhập</span>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function validateForm() {
+            var pass = document.getElementById("matKhau").value;
+            var confirm = document.getElementById("xacNhanMatKhau").value;
+            var errorMsg = document.getElementById("error-msg");
+
+            if (pass !== confirm) {
+                errorMsg.classList.remove("hidden");
+                return false; // Chặn không cho form gửi đi
+            }
+            errorMsg.classList.add("hidden");
+            return true; // Cho phép gửi đi
+        }
+    </script>
+</body>
+</html>

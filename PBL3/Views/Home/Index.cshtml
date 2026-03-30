@@ -1,0 +1,376 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraryPro - Hệ thống Quản lý Thư viện</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Khai báo biến CSS để tạo hiệu ứng đổi màu động */
+        :root {
+            font-family: 'Inter', sans-serif;
+            /* Mặc định là màu của Admin */
+            --accent-color: #2d7a4f;
+            --accent-light: #edf5f0;
+            --accent-border: #c8e0d3;
+            --accent-ring: rgba(45,122,79,0.15);
+            --accent-gradient: linear-gradient(135deg, #2d7a4f 0%, #1a5c38 100%);
+            --accent-shadow: 0 4px 16px rgba(45,122,79,0.35);
+            --overlay-bg: linear-gradient(135deg, rgba(26,58,42,0.92) 0%, rgba(45,90,61,0.78) 50%, rgba(26,58,42,0.88) 100%);
+            --indicator-color: #6ee7a0;
+        }
+
+        /* Các class sử dụng biến CSS */
+        .dyn-bg {
+            background-color: var(--accent-color);
+            transition: background-color 0.3s;
+        }
+
+        .dyn-light-bg {
+            background-color: var(--accent-light);
+            transition: background-color 0.3s;
+        }
+
+        .dyn-text {
+            color: var(--accent-color);
+            transition: color 0.3s;
+        }
+
+        .dyn-border {
+            border-color: var(--accent-border);
+            transition: border-color 0.3s;
+        }
+
+        .dyn-gradient {
+            background: var(--accent-gradient);
+            box-shadow: var(--accent-shadow);
+            transition: all 0.3s;
+        }
+
+        .dyn-overlay {
+            background: var(--overlay-bg);
+            transition: background 0.5s ease;
+        }
+
+        .dyn-indicator {
+            background-color: var(--indicator-color);
+            transition: background-color 0.5s ease;
+        }
+
+        .input-focus:focus {
+            border-color: var(--accent-color) !important;
+            box-shadow: 0 0 0 3px var(--accent-ring) !important;
+            outline: none;
+        }
+
+        /* Tùy chỉnh thanh cuộn cho thanh trượt tab */
+        .tab-slider {
+            transition: left 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex bg-[#f7f8fa]">
+
+    <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1599911164704-c22ff673c67c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaWJyYXJ5JTIwYm9va3MlMjBzaGVsdmVzJTIwY296eXxlbnwxfHx8fDE3NzMwMjU4MTB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+             alt="Thư viện"
+             class="absolute inset-0 w-full h-full object-cover" />
+
+        <div class="absolute inset-0 dyn-overlay"></div>
+
+        <div class="relative z-10 flex flex-col justify-between p-12 w-full">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
+                    <i class="fa-solid fa-book-open text-white text-lg"></i>
+                </div>
+                <span class="text-white text-[1.1rem] font-bold tracking-wide">LibraryPro</span>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex gap-3 items-center">
+                    <div class="w-1 h-12 rounded-full dyn-indicator"></div>
+                    <h1 class="text-white text-[2.1rem] font-bold leading-tight">
+                        Hệ thống<br />Quản lý Thư viện
+                    </h1>
+                </div>
+
+                <p id="desc-text" class="text-white/75 max-w-xs text-[0.95rem] leading-relaxed">
+                    Quản lý toàn bộ hoạt động thư viện: sách, độc giả, mượn trả và báo cáo thống kê.
+                </p>
+
+                <div class="flex gap-8 pt-4">
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-bookmark text-[14px]" style="color: var(--indicator-color); transition: color 0.5s;"></i>
+                            <span class="text-white text-[1.05rem] font-bold">12,500+</span>
+                        </div>
+                        <span class="text-white/55 text-[0.77rem]">Đầu sách</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-users text-[14px]" style="color: var(--indicator-color); transition: color 0.5s;"></i>
+                            <span class="text-white text-[1.05rem] font-bold">3,200+</span>
+                        </div>
+                        <span class="text-white/55 text-[0.77rem]">Độc giả</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-building-columns text-[14px]" style="color: var(--indicator-color); transition: color 0.5s;"></i>
+                            <span class="text-white text-[1.05rem] font-bold">98%</span>
+                        </div>
+                        <span class="text-white/55 text-[0.77rem]">Hài lòng</span>
+                    </div>
+                </div>
+
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 backdrop-blur-sm w-fit" style="background: rgba(255,255,255,0.12)">
+                    <i id="badge-icon" class="fa-solid fa-shield-halved text-emerald-300 text-[15px]"></i>
+                    <span id="badge-text" class="text-white text-[0.82rem] font-medium">Cổng Quản trị viên</span>
+                </div>
+            </div>
+
+            <p class="text-white/35 text-[0.77rem]">© 2026 LibraryPro. Bảo lưu mọi quyền.</p>
+        </div>
+    </div>
+
+    <div class="w-full lg:w-1/2 flex items-center justify-center px-6 py-12">
+        <div class="w-full max-w-[420px]">
+
+            <div class="flex lg:hidden items-center gap-3 mb-10 justify-center">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center dyn-bg">
+                    <i class="fa-solid fa-book-open text-white"></i>
+                </div>
+                <span class="text-[1.1rem] font-bold dyn-text">LibraryPro</span>
+            </div>
+
+            <div class="relative flex bg-white rounded-2xl p-1 border border-[#e2e8e4] mb-8 shadow-sm">
+                <div id="tab-slider" class="tab-slider absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-xl dyn-gradient left-[4px]"></div>
+
+                <button type="button" onclick="setRole('admin')" id="btn-admin" class="relative z-10 flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl transition-colors duration-300 text-white font-semibold text-[0.88rem]">
+                    <i class="fa-solid fa-shield-halved"></i> Quản trị viên
+                </button>
+                <button type="button" onclick="setRole('user')" id="btn-user" class="relative z-10 flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl transition-colors duration-300 text-[#7a8c82] font-medium text-[0.88rem]">
+                    <i class="fa-solid fa-users"></i> Người dùng
+                </button>
+            </div>
+
+            <div class="mb-7">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center dyn-light-bg">
+                        <i id="header-icon" class="fa-solid fa-shield-halved text-[18px] dyn-text"></i>
+                    </div>
+                    <div>
+                        <h2 id="form-title" class="text-[#0f1e16] text-[1.4rem] font-bold leading-tight">Đăng nhập Quản trị</h2>
+                    </div>
+                </div>
+                <p id="form-desc" class="text-[#6b7a72] text-[0.88rem]">Toàn quyền quản lý hệ thống thư viện</p>
+            </div>
+
+            <form id="loginForm" method="post" action="/Home/XulyDangNhap" class="space-y-5" onsubmit="return handleFormSubmit(event)">
+                <input type="hidden" id="roleInput" name="role" value="admin">
+
+                <div class="space-y-1.5">
+                    <label id="lbl-username" class="text-[#0f1e16] text-[0.87rem] font-semibold">Tên đăng nhập</label>
+                    <div class="relative">
+                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                            <i class="fa-regular fa-user text-[17px]"></i>
+                        </div>
+                        <input type="text" id="username" name="username" required
+                               class="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                               placeholder="Nhập tên quản trị...">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-[#0f1e16] text-[0.87rem] font-semibold">Mật khẩu</label>
+                    <div class="relative">
+                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6]">
+                            <i class="fa-solid fa-lock text-[17px]"></i>
+                        </div>
+                        <input type="password" id="password" name="password" required
+                               class="w-full pl-10 pr-12 py-3 rounded-xl border border-[#e2e8e4] bg-white text-[#0f1e16] placeholder-[#bfc9c2] transition-all input-focus text-[0.92rem]"
+                               placeholder="Nhập mật khẩu...">
+                        <button type="button" onclick="togglePassword()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#b0bdb6] hover:text-[#555] transition-colors">
+                            <i id="eye-icon" class="fa-regular fa-eye text-[17px]"></i>
+                        </button>
+                    </div>
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <p class="text-red-500 text-[0.85rem] mt-1.5 font-medium flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            @TempData["Error"]
+                        </p>
+                    }
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" class="hidden" id="rememberMe" onchange="toggleRemember()">
+                        <div id="check-box-ui" class="flex items-center justify-center rounded-md border-2 border-[#c8d5cc] bg-white transition-all" style="width:18px; height:18px;">
+                            <i id="check-icon" class="fa-solid fa-check text-white text-[10px] hidden"></i>
+                        </div>
+                        <span class="text-[#4a5e52] text-[0.85rem] select-none">Ghi nhớ đăng nhập</span>
+                    </label>
+                    <button type="button" class="text-[0.85rem] font-medium dyn-text hover:underline transition-all">Quên mật khẩu?</button>
+                </div>
+
+                <button type="submit" id="submit-btn" class="w-full py-3.5 rounded-xl text-white font-semibold text-[0.95rem] flex justify-center items-center gap-2 dyn-gradient hover:opacity-90 transition-all">
+                    <i id="submit-icon" class="fa-solid fa-shield-halved text-[17px]"></i>
+                    <span id="submit-text">Đăng nhập với tư cách Quản trị viên</span>
+                </button>
+                <a href="/Home/DangKy" id="register-btn" class="hidden w-full py-3.5 rounded-xl border-2 dyn-border dyn-text font-semibold text-[0.95rem] flex justify-center items-center gap-2 mt-3 hover:bg-black/5 transition-all text-center">
+                    <i class="fa-solid fa-user-plus text-[16px]"></i>
+                    <span>Đăng ký thẻ độc giả mới</span>
+                </a>
+            </form>
+
+            <div class="mt-8 flex items-start gap-2 rounded-xl px-4 py-3 border dyn-light-bg dyn-border">
+                <i class="fa-solid fa-circle-info mt-0.5 text-[15px] dyn-text"></i>
+                <p class="text-[0.8rem] dyn-text">
+                    Tài khoản Test: <br />
+                    Quản trị: <strong>admin</strong> / <strong>123</strong> <br />
+                    Người dùng: <strong>sv123</strong> / <strong>123</strong>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- DATA CẤU HÌNH ---
+        const rolesData = {
+            admin: {
+                accentColor: "#2d7a4f", accentLight: "#edf5f0", accentBorder: "#c8e0d3", accentRing: "rgba(45,122,79,0.15)",
+                gradient: "linear-gradient(135deg, #2d7a4f 0%, #1a5c38 100%)", shadow: "0 4px 16px rgba(45,122,79,0.35)",
+                overlayBg: "linear-gradient(135deg, rgba(26,58,42,0.92) 0%, rgba(45,90,61,0.78) 50%, rgba(26,58,42,0.88) 100%)",
+                indicatorColor: "#6ee7a0", badgeIconClass: "text-emerald-300 fa-shield-halved",
+                badgeText: "Cổng Quản trị viên", descText: "Quản lý toàn bộ hoạt động thư viện: sách, độc giả, mượn trả và báo cáo thống kê.",
+                formTitle: "Đăng nhập Quản trị", formDesc: "Toàn quyền quản lý hệ thống thư viện",
+                lblUsername: "Tên đăng nhập", placeUsername: "Nhập tên quản trị...", placePass: "Nhập mật khẩu quản trị...",
+                submitIcon: "fa-shield-halved", submitText: "Đăng nhập với tư cách Quản trị viên", headerIcon: "fa-shield-halved"
+            },
+            user: {
+                accentColor: "#3b6cb7", accentLight: "#eef2fb", accentBorder: "#c0d0ef", accentRing: "rgba(59,108,183,0.15)",
+                gradient: "linear-gradient(135deg, #3b6cb7 0%, #254d97 100%)", shadow: "0 4px 16px rgba(59,108,183,0.35)",
+                overlayBg: "linear-gradient(135deg, rgba(20,38,75,0.92) 0%, rgba(40,72,138,0.78) 50%, rgba(20,38,75,0.88) 100%)",
+                indicatorColor: "#93b8f5", badgeIconClass: "text-blue-300 fa-users",
+                badgeText: "Cổng Người dùng", descText: "Tra cứu sách, xem lịch sử mượn trả và gia hạn phiếu mượn nhanh chóng.",
+                formTitle: "Đăng nhập Người dùng", formDesc: "Tra cứu sách và quản lý phiếu mượn",
+                lblUsername: "Mã thẻ thư viện", placeUsername: "Nhập mã thẻ thư viện...", placePass: "Nhập mật khẩu...",
+                submitIcon: "fa-users", submitText: "Đăng nhập với tư cách Người dùng", headerIcon: "fa-users"
+            }
+        };
+
+        let currentRole = 'admin';
+
+        // --- HÀM CHUYỂN ĐỔI VAI TRÒ ---
+        function setRole(role) {
+            currentRole = role;
+            const data = rolesData[role];
+
+            // 1. Cập nhật biến CSS để đổi màu toàn bộ UI
+            document.documentElement.style.setProperty('--accent-color', data.accentColor);
+            document.documentElement.style.setProperty('--accent-light', data.accentLight);
+            document.documentElement.style.setProperty('--accent-border', data.accentBorder);
+            document.documentElement.style.setProperty('--accent-ring', data.accentRing);
+            document.documentElement.style.setProperty('--accent-gradient', data.gradient);
+            document.documentElement.style.setProperty('--accent-shadow', data.shadow);
+            document.documentElement.style.setProperty('--overlay-bg', data.overlayBg);
+            document.documentElement.style.setProperty('--indicator-color', data.indicatorColor);
+
+            // 2. Cập nhật input ẩn cho C#
+            document.getElementById('roleInput').value = role;
+
+            // 3. Hiệu ứng thanh trượt Tabs
+            const slider = document.getElementById('tab-slider');
+            const btnAdmin = document.getElementById('btn-admin');
+            const btnUser = document.getElementById('btn-user');
+
+            if (role === 'admin') {
+                slider.style.left = '4px';
+                btnAdmin.classList.replace('text-[#7a8c82]', 'text-white');
+                btnAdmin.classList.replace('font-medium', 'font-semibold');
+                btnUser.classList.replace('text-white', 'text-[#7a8c82]');
+                btnUser.classList.replace('font-semibold', 'font-medium');
+                document.getElementById('register-btn').classList.add('hidden');
+            } else {
+                slider.style.left = 'calc(50%)';
+                btnUser.classList.replace('text-[#7a8c82]', 'text-white');
+                btnUser.classList.replace('font-medium', 'font-semibold');
+                btnAdmin.classList.replace('text-white', 'text-[#7a8c82]');
+                btnAdmin.classList.replace('font-semibold', 'font-medium');
+                document.getElementById('register-btn').classList.remove('hidden');
+            }
+
+            // 4. Cập nhật Text & Icons
+            document.getElementById('badge-icon').className = `fa-solid ${data.badgeIconClass} text-[15px]`;
+            document.getElementById('badge-text').innerText = data.badgeText;
+            document.getElementById('desc-text').innerText = data.descText;
+            document.getElementById('form-title').innerText = data.formTitle;
+            document.getElementById('form-desc').innerText = data.formDesc;
+            document.getElementById('lbl-username').innerText = data.lblUsername;
+            document.getElementById('username').placeholder = data.placeUsername;
+            document.getElementById('password').placeholder = data.placePass;
+            document.getElementById('submit-icon').className = `fa-solid ${data.submitIcon} text-[17px]`;
+            document.getElementById('submit-text').innerText = data.submitText;
+            document.getElementById('header-icon').className = `fa-solid ${data.headerIcon} text-[18px] dyn-text`;
+
+            // Xóa nội dung đang nhập
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // --- HÀM ẨN/HIỆN MẬT KHẨU ---
+        function togglePassword() {
+            const passInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passInput.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        // --- HÀM CHECKBOX GHI NHỚ ---
+        function toggleRemember() {
+            const cb = document.getElementById('rememberMe');
+            const ui = document.getElementById('check-box-ui');
+            const icon = document.getElementById('check-icon');
+
+            if (cb.checked) {
+                ui.style.backgroundColor = 'var(--accent-color)';
+                ui.style.borderColor = 'var(--accent-color)';
+                icon.classList.remove('hidden');
+            } else {
+                ui.style.backgroundColor = 'white';
+                ui.style.borderColor = '#c8d5cc';
+                icon.classList.add('hidden');
+            }
+        }
+
+        // --- HIỆU ỨNG KHI BẤM NÚT ĐĂNG NHẬP ---
+        function handleFormSubmit(e) {
+            // Hiển thị trạng thái đang xử lý
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Đang đăng nhập...`;
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'not-allowed';
+
+            // Cho phép form gửi dữ liệu lên Backend C#
+            return true;
+        }     
+    </script>
+</body>
+</html>
