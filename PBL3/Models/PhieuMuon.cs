@@ -19,7 +19,7 @@ public partial class PhieuMuon
 
     public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; } = new List<ChiTietPhieuMuon>();
 
-    public virtual DocGium MaDgNavigation { get; set; } = null!;
+    public virtual DocGia MaDgNavigation { get; set; } = null!;
 
     public virtual NhanVien MaNvNavigation { get; set; } = null!;
 }

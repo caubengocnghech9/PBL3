@@ -29,7 +29,7 @@ public partial class Sach
 
     public virtual NhaXuatBan? MaNxbNavigation { get; set; }
 
-    public virtual TacGium? MaTgNavigation { get; set; }
+    public virtual TacGia? MaTgNavigation { get; set; }
 
     public virtual TheLoai? MaTlNavigation { get; set; }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PBL3.Models;
 
-public partial class DocGium
+public partial class DocGia
 {
     public int MaDg { get; set; }
 
@@ -21,5 +21,5 @@ public partial class DocGium
 
     public virtual ICollection<PhieuMuon> PhieuMuons { get; set; } = new List<PhieuMuon>();
 
-    public virtual TaiKhoanDocGium? TaiKhoanDocGium { get; set; }
+    public virtual TaiKhoanDocGia? TaiKhoanDocGium { get; set; }
 }

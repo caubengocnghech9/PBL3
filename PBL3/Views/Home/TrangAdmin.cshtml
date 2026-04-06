@@ -47,7 +47,9 @@
                         <thead>
                             <tr><th>Mã phiếu</th><th>Độc giả</th><th>Sách</th><th>Hạn trả</th><th>Trạng thái</th></tr>
                         </thead>
-                        <tbody id="dashboard-recent-table"></tbody>
+                        <tbody id="dashboard-recent-table">
+                            <tr><td colspan="5" style="text-align: center; color: #888;">Dữ liệu thống kê sẽ được cập nhật sau...</td></tr>
+                        </tbody>
                     </table>
                 </div>
             </section>
@@ -61,17 +63,44 @@
                             <thead>
                                 <tr><th>Mã</th><th>Tên sách</th><th>Tác giả</th><th>Số lượng</th><th>Trạng thái</th></tr>
                             </thead>
-                            <tbody id="books-table-body"></tbody>
+                            <tbody id="books-table-body">
+                                @{
+                                    var dsSach = ViewBag.DanhSachSach as List<PBL3.Models.Sach>;
+                                }
+                                @if (dsSach != null && dsSach.Count > 0)
+                                {
+                                    foreach (var sach in dsSach)
+                                    {
+                                        <tr>
+                                            <td>@sach.MaSach</td>
+                                            <td>@sach.TenSach</td>
+                                            <td>@sach.MaTg</td>
+                                            <td>@sach.SoLuongTon</td>
+                                            <td>
+                                                @if (sach.SoLuongTon > 0)
+                                                {
+                                                    <span style="color: #2ed573; font-weight: 600;">Còn hàng</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="color: #ff4757; font-weight: 600;">Hết hàng</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr><td colspan="5" style="text-align:center;">Chưa có dữ liệu sách trong Database.</td></tr>
+                                }
+                            </tbody>
                         </table>
                     </div>
                     <div class="side-form card-style">
                         <h3>Thông tin sách</h3>
                         <form id="bookForm">
                             <label>Tên sách</label><input type="text" name="title">
-                            <label>Tác giả</label><select name="author"><option value="">-- Chọn tác giả --</option></select>
-                            <label>Thể loại</label><select name="category"><option value="">-- Chọn thể loại --</option></select>
                             <label>Số lượng</label><input type="number" name="qty" value="0">
-                            <label>Đơn giá</label><input type="number" name="price" value="0">
                             <button type="button" class="btn-primary w-full mt-20">Lưu dữ liệu</button>
                         </form>
                     </div>
@@ -87,18 +116,34 @@
                             <thead>
                                 <tr><th>Mã ĐG</th><th>Họ tên</th><th>Số điện thoại</th><th>Hạn thẻ</th></tr>
                             </thead>
-                            <tbody id="readers-table-body"></tbody>
+                            <tbody id="readers-table-body">
+                                @{
+                                    var dsDocGia = ViewBag.DanhSachDocGia as List<PBL3.Models.DocGia>;
+                                }
+                                @if (dsDocGia != null && dsDocGia.Count > 0)
+                                {
+                                    foreach (var dg in dsDocGia)
+                                    {
+                                        <tr>
+                                            <td>@dg.MaDg</td>
+                                            <td>@dg.HoTen</td>
+                                            <td>@dg.Sdt</td>
+                                            <td>@(dg.HanThe.HasValue? dg.HanThe.Value.ToString("dd/MM/yyyy") : "Chưa có hạn")</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr><td colspan="4" style="text-align:center;">Chưa có dữ liệu độc giả trong Database.</td></tr>
+                                }
+                            </tbody>
                         </table>
                     </div>
                     <div class="side-form card-style">
                         <h3>Chi tiết độc giả</h3>
                         <form id="readerForm">
-                            <label>Mã ĐG (MaDG)</label><input type="text" name="id" placeholder="Tự động...">
                             <label>Họ tên</label><input type="text" name="fullName">
-                            <label>Ngày sinh</label><input type="date" name="dob">
                             <label>Điện thoại</label><input type="text" name="phone">
-                            <label>Địa chỉ</label><textarea name="address" rows="2"></textarea>
-                            <label>Hạn thẻ</label><input type="date" name="expiry">
                             <button type="button" class="btn-primary w-full mt-20">Lưu hồ sơ</button>
                         </form>
                     </div>
@@ -107,17 +152,32 @@
 
             <section id="borrow" class="content-section" style="display:none;">
                 <h1>Phiếu mượn / trả sách</h1>
-                <div class="card-style grid-3">
-                    <div><label>Độc giả</label><select><option value="">-- Chọn độc giả --</option></select></div>
-                    <div><label>Ngày mượn</label><input type="date"></div>
-                    <div><label>Hạn trả</label><input type="date"></div>
-                </div>
                 <div class="table-container card-style mt-20">
                     <table>
                         <thead>
-                            <tr><th>Mã phiếu</th><th>Sách</th><th>Ngày mượn</th><th>Hạn trả</th><th>Thao tác</th></tr>
+                            <tr><th>Mã phiếu</th><th>Mã ĐG</th><th>Ngày mượn</th><th>Hạn trả</th></tr>
                         </thead>
-                        <tbody id="borrow-table-body"></tbody>
+                        <tbody id="borrow-table-body">
+                            @{
+                                var dsPhieuMuon = ViewBag.DanhSachPhieuMuon as List<PBL3.Models.PhieuMuon>;
+                            }
+                            @if (dsPhieuMuon != null && dsPhieuMuon.Count > 0)
+                            {
+                                foreach (var pm in dsPhieuMuon)
+                                {
+                                    <tr>
+                                        <td>@pm.MaPm</td>
+                                        <td>@pm.MaDg</td>
+                                        <td>@(pm.NgayMuon.HasValue? pm.NgayMuon.Value.ToString("dd/MM/yyyy") : "")</td>
+                                        <td>@pm.NgayHetHan.ToString("dd/MM/yyyy")</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="4" style="text-align:center;">Chưa có phiếu mượn nào.</td></tr>
+                            }
+                        </tbody>
                     </table>
                 </div>
             </section>
@@ -127,34 +187,44 @@
                 <div class="card-style">
                     <table>
                         <thead>
-                            <tr><th>Mã đơn</th><th>Nhà cung cấp</th><th>Ngày nhập</th><th>Tổng tiền</th></tr>
+                            <tr><th>Mã PN</th><th>Mã NV</th><th>Ngày nhập</th><th>Tổng tiền</th></tr>
                         </thead>
-                        <tbody id="import-table-body"></tbody>
+                        <tbody id="import-table-body">
+                            @{
+                                var dsPhieuNhap = ViewBag.DanhSachPhieuNhap as List<PBL3.Models.PhieuNhap>;
+                            }
+                            @if (dsPhieuNhap != null && dsPhieuNhap.Count > 0)
+                            {
+                                foreach (var pn in dsPhieuNhap)
+                                {
+                                    <tr>
+                                        <td>@pn.MaPn</td>
+                                        <td>@pn.MaNv</td>
+                                        <td>@(pn.NgayNhap.HasValue? pn.NgayNhap.Value.ToString("dd/MM/yyyy") : "")</td>
+                                        <td>@pn.TongTien</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="4" style="text-align:center;">Chưa có phiếu nhập nào.</td></tr>
+                            }
+                        </tbody>
                     </table>
                 </div>
             </section>
 
             <section id="reference" class="content-section" style="display:none;">
                 <h1>Danh mục bổ trợ</h1>
-                <div class="tabs">
-                    <button class="tab-btn active" onclick="switchRefTab('authors')">Tác giả</button>
-                    <button class="tab-btn" onclick="switchRefTab('categories')">Thể loại</button>
-                    <button class="tab-btn" onclick="switchRefTab('publishers')">Nhà xuất bản</button>
-                </div>
-                <div id="ref-content" class="card-style mt-10">
-                    <table>
-                        <thead><tr><th>Mã</th><th>Tên danh mục</th><th>Hành động</th></tr></thead>
-                        <tbody id="ref-table-body"></tbody>
-                    </table>
+                <div class="card-style mt-10 text-center text-gray-500 py-10">
+                    Phần quản lý danh mục (Tác giả, Thể loại...) sẽ được cập nhật sau.
                 </div>
             </section>
 
             <section id="reports" class="content-section" style="display:none;">
                 <h1>Báo cáo thống kê</h1>
-                <div class="card-style">
-                    <table>
-                        <tbody id="reports-table-body"></tbody>
-                    </table>
+                <div class="card-style mt-10 text-center text-gray-500 py-10">
+                    Phần báo cáo thống kê sẽ được cập nhật sau.
                 </div>
             </section>
         </main>

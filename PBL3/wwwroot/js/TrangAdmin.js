@@ -44,8 +44,8 @@ function renderAll() {
 
     // 2. Render các bảng dữ liệu rỗng
     renderEmpty('dashboard-recent-table', 5);
-    renderEmpty('books-table-body', 4);
-    renderEmpty('readers-table-body', 4);
+    //renderEmpty('books-table-body', 4);
+    //renderEmpty('readers-table-body', 4);
     renderEmpty('borrow-table-body', 5);
     renderEmpty('import-table-body', 4);
     renderEmpty('ref-table-body', 3);

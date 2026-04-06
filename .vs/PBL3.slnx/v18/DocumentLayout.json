@@ -3,28 +3,40 @@
   "WorkspaceRootPath": "D:\\NET\\PBL3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\models\\quanlythuviencontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\models\\quanlythuviencontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\views\\home\\trangchuuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\views\\home\\trangchuuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\views\\home\\phieumuon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\views\\home\\phieumuon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\wwwroot\\css\\trangadmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\wwwroot\\css\\trangadmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\views\\home\\thongtincanhan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\views\\home\\thongtincanhan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\views\\home\\trangadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\views\\home\\trangadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\models\\quanlythuviencontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\models\\quanlythuviencontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\models\\sach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\models\\sach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\views\\home\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\views\\home\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\wwwroot\\css\\trangadmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|solutionrelative:pbl3\\wwwroot\\css\\trangadmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{168913BE-CFBF-22A3-7EB1-9531C1A25364}|PBL3\\PBL3.csproj|d:\\net\\pbl3\\pbl3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -38,11 +50,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QuanLyThuVienContext.cs",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Models\\QuanLyThuVienContext.cs",
+              "RelativeDocumentMoniker": "PBL3\\Models\\QuanLyThuVienContext.cs",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Models\\QuanLyThuVienContext.cs",
+              "RelativeToolTip": "PBL3\\Models\\QuanLyThuVienContext.cs",
+              "ViewState": "AgIAAEkBAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T08:32:59.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TrangChuUser.cshtml",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\TrangChuUser.cshtml",
+              "RelativeDocumentMoniker": "PBL3\\Views\\Home\\TrangChuUser.cshtml",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\TrangChuUser.cshtml",
+              "RelativeToolTip": "PBL3\\Views\\Home\\TrangChuUser.cshtml",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAowLIAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-06T08:27:16.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PhieuMuon.cshtml",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\PhieuMuon.cshtml",
+              "RelativeDocumentMoniker": "PBL3\\Views\\Home\\PhieuMuon.cshtml",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\PhieuMuon.cshtml",
+              "RelativeToolTip": "PBL3\\Views\\Home\\PhieuMuon.cshtml",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAqwFsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-06T07:51:56.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TrangAdmin.cshtml",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\TrangAdmin.cshtml",
+              "RelativeDocumentMoniker": "PBL3\\Views\\Home\\TrangAdmin.cshtml",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\TrangAdmin.cshtml",
+              "RelativeToolTip": "PBL3\\Views\\Home\\TrangAdmin.cshtml",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAUwLAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-23T09:05:42.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ThongTinCaNhan.cshtml",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\ThongTinCaNhan.cshtml",
+              "RelativeDocumentMoniker": "PBL3\\Views\\Home\\ThongTinCaNhan.cshtml",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\ThongTinCaNhan.cshtml",
+              "RelativeToolTip": "PBL3\\Views\\Home\\ThongTinCaNhan.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAqwFIAAACdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-06T07:52:42.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "PBL3\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "PBL3\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAkwJEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T07:54:49.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "TrangAdmin.css",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\wwwroot\\css\\TrangAdmin.css",
+              "RelativeDocumentMoniker": "PBL3\\wwwroot\\css\\TrangAdmin.css",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\wwwroot\\css\\TrangAdmin.css",
+              "RelativeToolTip": "PBL3\\wwwroot\\css\\TrangAdmin.css",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAAMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-03-23T08:11:28.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Sach.cs",
+              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Models\\Sach.cs",
+              "RelativeDocumentMoniker": "PBL3\\Models\\Sach.cs",
+              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Models\\Sach.cs",
+              "RelativeToolTip": "PBL3\\Models\\Sach.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwAsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T07:04:40.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "DangKy.cshtml",
               "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\DangKy.cshtml",
               "RelativeDocumentMoniker": "PBL3\\Views\\Home\\DangKy.cshtml",
@@ -50,76 +166,11 @@
               "RelativeToolTip": "PBL3\\Views\\Home\\DangKy.cshtml",
               "ViewState": "AgIAAHsAAAAAAAAAAAAqwKgAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-30T08:02:59.507Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-30T08:02:59.507Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TrangAdmin.cshtml",
-              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\TrangAdmin.cshtml",
-              "RelativeDocumentMoniker": "PBL3\\Views\\Home\\TrangAdmin.cshtml",
-              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\TrangAdmin.cshtml",
-              "RelativeToolTip": "PBL3\\Views\\Home\\TrangAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-23T09:05:42.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Program.cs",
-              "RelativeDocumentMoniker": "PBL3\\Program.cs",
-              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Program.cs",
-              "RelativeToolTip": "PBL3\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T08:18:53.029Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TrangAdmin.css",
-              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\wwwroot\\css\\TrangAdmin.css",
-              "RelativeDocumentMoniker": "PBL3\\wwwroot\\css\\TrangAdmin.css",
-              "ToolTip": "D:\\NET\\PBL3\\PBL3\\wwwroot\\css\\TrangAdmin.css",
-              "RelativeToolTip": "PBL3\\wwwroot\\css\\TrangAdmin.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALQAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-23T08:11:28.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "PBL3\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "PBL3\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T07:54:49.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QuanLyThuVienContext.cs",
-              "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Models\\QuanLyThuVienContext.cs",
-              "RelativeDocumentMoniker": "PBL3\\Models\\QuanLyThuVienContext.cs",
-              "ToolTip": "D:\\NET\\PBL3\\PBL3\\Models\\QuanLyThuVienContext.cs",
-              "RelativeToolTip": "PBL3\\Models\\QuanLyThuVienContext.cs",
-              "ViewState": "AgIAAB8BAAAAAAAAAAAAwJ8AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T07:50:39.423Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\NET\\PBL3\\PBL3\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "PBL3\\Views\\Home\\Index.cshtml",

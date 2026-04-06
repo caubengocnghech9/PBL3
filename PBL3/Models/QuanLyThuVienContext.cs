@@ -19,7 +19,7 @@ public partial class QuanLyThuVienContext : DbContext
 
     public virtual DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
 
-    public virtual DbSet<DocGium> DocGia { get; set; }
+    public virtual DbSet<DocGia> DocGia { get; set; }
 
     public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
 
@@ -33,9 +33,9 @@ public partial class QuanLyThuVienContext : DbContext
 
     public virtual DbSet<Sach> Saches { get; set; }
 
-    public virtual DbSet<TacGium> TacGia { get; set; }
+    public virtual DbSet<TacGia> TacGia { get; set; }
 
-    public virtual DbSet<TaiKhoanDocGium> TaiKhoanDocGia { get; set; }
+    public virtual DbSet<TaiKhoanDocGia> TaiKhoanDocGia { get; set; }
 
     public virtual DbSet<TaiKhoanNhanVien> TaiKhoanNhanViens { get; set; }
 
@@ -93,7 +93,7 @@ public partial class QuanLyThuVienContext : DbContext
                 .HasConstraintName("FK__ChiTietPh__MaSac__06CD04F7");
         });
 
-        modelBuilder.Entity<DocGium>(entity =>
+        modelBuilder.Entity<DocGia>(entity =>
         {
             entity.HasKey(e => e.MaDg).HasName("PK__DocGia__27258660ECB9B89D");
 
@@ -248,7 +248,7 @@ public partial class QuanLyThuVienContext : DbContext
                 .HasConstraintName("FK__Sach__MaTL__4BAC3F29");
         });
 
-        modelBuilder.Entity<TacGium>(entity =>
+        modelBuilder.Entity<TacGia>(entity =>
         {
             entity.HasKey(e => e.MaTg).HasName("PK__TacGia__272500740751940B");
 
@@ -259,7 +259,7 @@ public partial class QuanLyThuVienContext : DbContext
             entity.Property(e => e.Website).HasMaxLength(200);
         });
 
-        modelBuilder.Entity<TaiKhoanDocGium>(entity =>
+        modelBuilder.Entity<TaiKhoanDocGia>(entity =>
         {
             entity.HasKey(e => e.MaTk).HasName("PK__TaiKhoan__27250070563BBD0E");
 
@@ -285,7 +285,7 @@ public partial class QuanLyThuVienContext : DbContext
             entity.Property(e => e.TrangThai).HasDefaultValue(true);
 
             entity.HasOne(d => d.MaDgNavigation).WithOne(p => p.TaiKhoanDocGium)
-                .HasForeignKey<TaiKhoanDocGium>(d => d.MaDg)
+                .HasForeignKey<TaiKhoanDocGia>(d => d.MaDg)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__TaiKhoanDo__MaDG__778AC167");
         });

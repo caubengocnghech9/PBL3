@@ -1,0 +1,262 @@
+﻿@model List<PBL3.Models.Sach>
+@{
+    Layout = null;
+    var tenNguoiDung = Context.Session.GetString("TenDangNhap") ?? "Độc giả";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Độc Giả - LibraryPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fc;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-[#1e2a3e]">
+
+    <nav class="bg-white shadow-sm border-b border-[#e2e8f0] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-[#3b6cb7] text-white rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <span class="font-bold text-xl text-[#3b6cb7]">LibraryPro</span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="/Home/TrangChuUser" class="text-[#3b6cb7] font-semibold border-b-2 border-[#3b6cb7] px-1 py-5">Thư viện sách</a>
+                    <a href="/Home/PhieuMuon" class="text-[#64748b] hover:text-[#3b6cb7] font-medium px-1 py-5 transition">Phiếu mượn của tôi</a>
+                    <a href="/Home/ThongTinCaNhan" class="text-[#64748b] hover:text-[#3b6cb7] font-medium px-1 py-5 transition">Thông tin cá nhân</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-right hidden md:block">
+                        <p class="text-[0.8rem] text-[#64748b] leading-tight">Xin chào,</p>
+                        <p class="font-semibold text-[#0f172a] leading-tight">@tenNguoiDung</p>
+                    </div>
+                    <a href="/Home/DangXuat" class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition cursor-pointer" title="Đăng xuất">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-[#e2e8f0] flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+                <div>
+                    <p class="text-[#64748b] text-sm font-medium">Sách đang mượn</p>
+                    <p class="text-2xl font-bold text-[#0f172a]">0 <span class="text-sm font-normal text-[#64748b]">cuốn</span></p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-[#e2e8f0] flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <p class="text-[#64748b] text-sm font-medium">Sách quá hạn</p>
+                    <p class="text-2xl font-bold text-[#0f172a]">0 <span class="text-sm font-normal text-[#64748b]">cuốn</span></p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-[#e2e8f0] flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-green-50 text-green-500 flex items-center justify-center text-xl">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <div>
+                    <p class="text-[#64748b] text-sm font-medium">Trạng thái thẻ</p>
+                    <p class="text-lg font-bold text-green-600">Đang hoạt động</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="sec-sach" class="tab-content block">
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-[#e2e8f0] mb-8 flex gap-4">
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[#94a3b8]"></i>
+                    <input type="text" placeholder="Tìm kiếm tên sách, tác giả..." class="w-full pl-11 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#3b6cb7] focus:ring-2 focus:ring-[#3b6cb7]/20 outline-none transition">
+                </div>
+                <button class="bg-[#3b6cb7] text-white px-8 py-3 rounded-xl font-medium hover:bg-[#254d97] transition">Tìm kiếm</button>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-6 text-[#0f172a] border-l-4 border-[#3b6cb7] pl-3">Khám Phá Sách</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var sach in Model)
+                    {
+                        <div class="book-card bg-white rounded-2xl p-4 shadow-sm border border-[#e2e8f0] transition-all flex flex-col h-full">
+                            <div class="w-full h-48 bg-[#f8fafc] rounded-xl flex items-center justify-center text-[#cbd5e1] mb-4">
+                                <i class="fa-solid fa-book text-5xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <span class="text-[0.7rem] font-bold text-[#3b6cb7] uppercase tracking-wider bg-blue-50 px-2 py-1 rounded-md">
+                                    @sach.MaTl
+                                </span>
+                                <h3 class="font-bold text-[#0f172a] mt-2 mb-1 line-clamp-2" title="@sach.TenSach">@sach.TenSach</h3>
+                                <p class="text-[0.85rem] text-[#64748b] mb-2"><i class="fa-solid fa-pen-nib text-[0.75rem] mr-1"></i>Mã TG: @sach.MaTg</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-[#f1f5f9] flex items-center justify-between">
+                                <div>
+                                    @if (sach.SoLuongTon > 0)
+                                    {
+                                        <span class="text-[0.8rem] font-semibold text-green-600">Còn @sach.SoLuongTon cuốn</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-[0.8rem] font-semibold text-red-500">Hết sách</span>
+                                    }
+                                </div>
+                                <button class="w-8 h-8 rounded-full bg-blue-50 text-[#3b6cb7] flex items-center justify-center hover:bg-[#3b6cb7] hover:text-white transition" title="Thêm vào giỏ mượn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-span-full py-12 text-center text-[#64748b]">
+                        <i class="fa-solid fa-box-open text-4xl mb-3 text-[#cbd5e1]"></i>
+                        <p>Thư viện hiện chưa có sách nào.</p>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <section id="sec-phieumuon" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-6 text-[#0f172a] border-l-4 border-[#3b6cb7] pl-3">Lịch Sử Mượn Trả</h2>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-[#e2e8f0] overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#f8fafc] border-b border-[#e2e8f0]">
+                            <th class="p-4 font-semibold text-[#475569] text-sm">Mã Phiếu</th>
+                            <th class="p-4 font-semibold text-[#475569] text-sm">Ngày Mượn</th>
+                            <th class="p-4 font-semibold text-[#475569] text-sm">Hạn Trả</th>
+                            <th class="p-4 font-semibold text-[#475569] text-sm">Ghi Chú</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var lichSu = ViewBag.LichSuMuon as List<PBL3.Models.PhieuMuon>;
+                        }
+
+                        @if (lichSu != null && lichSu.Count > 0)
+                        {
+                            foreach (var pm in lichSu)
+                            {
+                                <tr class="border-b border-[#f1f5f9] hover:bg-[#f8fafc] transition">
+                                    <td class="p-4 text-[#0f172a] font-medium">@pm.MaPm</td>
+                                    <td class="p-4 text-[#64748b]">@(pm.NgayMuon.HasValue? pm.NgayMuon.Value.ToString("dd/MM/yyyy") : "---")</td>
+                                    <td class="p-4 text-red-500 font-semibold">@(pm.NgayHetHan.HasValue? pm.NgayHetHan.Value.ToString("dd/MM/yyyy") : "---")</td>
+                                    <td class="p-4 text-[#64748b] text-sm">@pm.GhiChu</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="p-10 text-center text-[#94a3b8]">
+                                    <i class="fa-solid fa-box-open text-3xl mb-2"></i>
+                                    <p>Chưa có dữ liệu phiếu mượn.</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="sec-thongtin" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-6 text-[#0f172a] border-l-4 border-[#3b6cb7] pl-3">Hồ Sơ Độc Giả</h2>
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e2e8f0] max-w-2xl mx-auto">
+                @{
+                    var docGia = ViewBag.ThongTinCaNhan as PBL3.Models.DocGia;
+                }
+
+                @if (docGia != null)
+                {
+                    <div class="flex items-center gap-6 mb-8 border-b border-[#e2e8f0] pb-6">
+                        <div class="w-20 h-20 bg-gradient-to-r from-[#3b6cb7] to-[#254d97] rounded-full flex items-center justify-center text-white text-3xl shadow-md">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-[#0f172a]">@docGia.HoTen</h3>
+                            <p class="text-[#3b6cb7] font-medium mt-1">Mã ĐG: @docGia.MaDg</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#64748b] font-medium"><i class="fa-solid fa-phone w-6 text-center"></i> Số điện thoại:</span>
+                            <span class="font-semibold text-[#0f172a]">@docGia.Sdt</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#64748b] font-medium"><i class="fa-solid fa-location-dot w-6 text-center"></i> Địa chỉ:</span>
+                            <span class="font-semibold text-[#0f172a]">@docGia.DiaChi</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#64748b] font-medium"><i class="fa-regular fa-calendar-plus w-6 text-center"></i> Ngày lập thẻ:</span>
+                            <span class="font-semibold text-green-600">@(docGia.NgayLapThe.HasValue? docGia.NgayLapThe.Value.ToString("dd/MM/yyyy") : "---")</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#64748b] font-medium"><i class="fa-solid fa-clock-rotate-left w-6 text-center"></i> Hạn thẻ:</span>
+                            <span class="font-semibold text-red-500">@(docGia.HanThe.HasValue? docGia.HanThe.Value.ToString("dd/MM/yyyy") : "---")</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center text-red-500 py-10 font-medium">
+                        <i class="fa-solid fa-circle-exclamation text-4xl mb-3"></i>
+                        <p>Dữ liệu đang trống do chưa cập nhật C# (HomeController).</p>
+                    </div>
+                }
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            // 1. Ẩn tất cả nội dung tab
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            // 2. Hiện nội dung tab được bấm
+            document.getElementById('sec-' + tabId).classList.remove('hidden');
+            document.getElementById('sec-' + tabId).classList.add('block');
+
+            // 3. Xóa màu xanh của tất cả các nút
+            const tabs = ['sach', 'phieumuon', 'thongtin'];
+            tabs.forEach(t => {
+                document.getElementById('tab-' + t).className = "text-[#64748b] hover:text-[#3b6cb7] font-medium px-1 py-5 transition";
+            });
+
+            // 4. Bôi màu xanh cho nút đang chọn
+            document.getElementById('tab-' + tabId).className = "text-[#3b6cb7] font-semibold border-b-2 border-[#3b6cb7] px-1 py-5";
+        }
+    </script>
+</body>
+</html>

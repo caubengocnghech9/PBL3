@@ -151,7 +151,6 @@ D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\t33q5pvqzt-{0}-b9sayid5wm-b9sayid5
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\eb0lqah3t1-{0}-5gtk14122a-5gtk14122a.gz
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\i5z24yqpr6-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\8092a0luci-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
-D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\4lkb9sb58i-{0}-gamjgfc2zw-gamjgfc2zw.gz
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\s428uzh9f2-{0}-bqjiyaj88i-bqjiyaj88i.gz
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\m7zwc5fra7-{0}-c2jlpeoesf-c2jlpeoesf.gz
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\4fr5fe0luc-{0}-erw9l3u2r3-erw9l3u2r3.gz
@@ -225,3 +224,5 @@ D:\NET\PBL3\PBL3\obj\Debug\net10.0\refint\PBL3.dll
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\PBL3.pdb
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\PBL3.genruntimeconfig.cache
 D:\NET\PBL3\PBL3\obj\Debug\net10.0\ref\PBL3.dll
+D:\NET\PBL3\PBL3\obj\Debug\net10.0\PBL3.sourcelink.json
+D:\NET\PBL3\PBL3\obj\Debug\net10.0\compressed\4lkb9sb58i-{0}-e22qde6ytz-e22qde6ytz.gz

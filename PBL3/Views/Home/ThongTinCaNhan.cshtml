@@ -1,0 +1,97 @@
+﻿@model PBL3.Models.DocGia
+@{
+    Layout = null;
+    var tenNguoiDung = Context.Session.GetString("TenDangNhap") ?? "Độc giả";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân - LibraryPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fc;
+        }</style>
+</head>
+<body class="text-[#1e2a3e]">
+
+    <nav class="bg-white shadow-sm border-b border-[#e2e8f0] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-[#3b6cb7] text-white rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <span class="font-bold text-xl text-[#3b6cb7]">LibraryPro</span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="/Home/TrangChuUser" class="text-[#64748b] hover:text-[#3b6cb7] font-medium px-1 py-5 transition">Thư viện sách</a>
+                    <a href="/Home/PhieuMuon" class="text-[#64748b] hover:text-[#3b6cb7] font-medium px-1 py-5 transition">Phiếu mượn của tôi</a>
+                    <a href="/Home/ThongTinCaNhan" class="text-[#3b6cb7] font-semibold border-b-2 border-[#3b6cb7] px-1 py-5">Thông tin cá nhân</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-right hidden md:block">
+                        <p class="text-[0.8rem] text-[#64748b] leading-tight">Xin chào,</p>
+                        <p class="font-semibold text-[#0f172a] leading-tight">@tenNguoiDung</p>
+                    </div>
+                    <a href="/Home/DangXuat" class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition cursor-pointer" title="Đăng xuất">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-2xl font-bold mb-6 text-[#0f172a] border-l-4 border-[#3b6cb7] pl-3">Hồ Sơ Độc Giả</h2>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#e2e8f0] max-w-2xl mx-auto">
+            @if (Model != null)
+            {
+                <div class="flex items-center gap-6 mb-8 border-b border-[#e2e8f0] pb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-[#3b6cb7] to-[#254d97] rounded-full flex items-center justify-center text-white text-3xl shadow-md">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0f172a]">@Model.HoTen</h3>
+                        <p class="text-[#3b6cb7] font-medium mt-1">Mã ĐG: @Model.MaDg</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#64748b] font-medium"><i class="fa-solid fa-phone w-6 text-center"></i> Số điện thoại:</span>
+                        <span class="font-semibold text-[#0f172a]">@Model.Sdt</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#64748b] font-medium"><i class="fa-solid fa-location-dot w-6 text-center"></i> Địa chỉ:</span>
+                        <span class="font-semibold text-[#0f172a]">@Model.DiaChi</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#64748b] font-medium"><i class="fa-regular fa-calendar-plus w-6 text-center"></i> Ngày lập thẻ:</span>
+                        <span class="font-semibold text-green-600">@(Model.NgayLapThe.HasValue? Model.NgayLapThe.Value.ToString("dd/MM/yyyy") : "Chưa cập nhật")</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#64748b] font-medium"><i class="fa-solid fa-clock-rotate-left w-6 text-center"></i> Hạn thẻ:</span>
+                        <span class="font-semibold text-red-500">@(Model.HanThe.HasValue? Model.HanThe.Value.ToString("dd/MM/yyyy") : "Chưa cập nhật")</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="text-center text-red-500 py-10 font-medium">
+                    <i class="fa-solid fa-circle-exclamation text-4xl mb-3"></i>
+                    <p>Không tìm thấy hồ sơ cá nhân. Vui lòng liên hệ Thư viện.</p>
+                </div>
+            }
+        </div>
+    </main>
+</body>
+</html>

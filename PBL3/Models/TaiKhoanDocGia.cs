@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PBL3.Models;
 
-public partial class TaiKhoanDocGium
+public partial class TaiKhoanDocGia
 {
     public int MaTk { get; set; }
 
@@ -21,5 +21,5 @@ public partial class TaiKhoanDocGium
 
     public DateTime? NgayTao { get; set; }
 
-    public virtual DocGium MaDgNavigation { get; set; } = null!;
+    public virtual DocGia MaDgNavigation { get; set; } = null!;
 }

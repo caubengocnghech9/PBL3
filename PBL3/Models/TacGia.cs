@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PBL3.Models;
 
-public partial class TacGium
+public partial class TacGia
 {
     public int MaTg { get; set; }
 
